@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+</head>
+<body>
+   <!-- HEADER -->
+   {% include 'topbar.html' %}
+   <!--/HEADER -->
+<!-- PAGE -->
+<section id="page">
+         <!-- SIDEBAR -->
+         {% include 'leftsidebar.html' %}
+         <!-- /SIDEBAR -->
+   <div id="main-content">
+      <!-- SAMPLE BOX CONFIGURATION MODAL FORM-->
+      <div class="modal fade" id="box-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+        </div>
+
+<div class="box-body">
+      <ul class="pricing_table row">
+         {% for data in commoditylist %}
+         <li class="price_block col-md-3 col-xs-11">
+               <div class="price green">
+               <div class="price_figure">
+                  <span class="price_number">{{data.event_name}}</span>
+               </div>
+            </div>
+            <ul class="features">
+               <li>{{data.event_time}}</li>
+               <li>{{data.location}}</li>
+               <li>{{data.person}}</li>
+               <li>{{data.tel}}</li>
+               <li>描述：</li>
+               <li>{{data.desc}}</li>
+            </ul>
+            <div class="footer">
+               <button class="btn btn-info btn-xs" onclick="javascript:editcommodity({{data.id}})"><i class="fa fa-pencil-square-o"></i> 编辑</button>
+
+               {% if not data.status=='Y'%}
+               <button class="btn btn-warning btn-xs" onclick="javascript:deletedata({{data.id}})"><i class="fa   fa-trash-o"></i> 删除</button>
+               {% endif%}
+      </div>
+         </li>
+         {% endfor %}
+      </ul>
+   </div>
+</div>
+
+    //编辑一条记录
+function editcommodity(id)
+{
+   $.ajax({
+   url: '/editcommodity'+'/'+id,
+   contentType: 'application/json;charset=UTF-8',
+   cache:false,
+   dataType: 'html',
+   success: function (response) {
+      var result = $('#box-config').append(response).find('#box-config').html();
+      $('#box-config').html(result);
+      $('#box-config').modal('show');
+      }
+   });
+}
