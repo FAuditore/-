@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<meta charset="utf-8">
-	<title>商品追溯</title>
+	<title>综合查询</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
@@ -64,11 +64,11 @@
 											<i class="fa fa-home"></i>
 											<a href="index.html">主页面</a>
 										</li>
-										<li>商品溯源</li>
+										<li>综合查询</li>
 									</ul>
 									<!-- /BREADCRUMBS -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">商品录入</h3>
+										<h3 class="content-title pull-left">查询条件</h3>
 									</div>
 								</div>
 							</div>
@@ -78,79 +78,42 @@
 						<div class="row">
 							<div class="col-md-12">
 								<!-- BOX -->
-								<div class="box">
-									<div class="box-title">
-										<h4><i class="fa fa-bars"></i></h4>
-										<div class="tools">
-											<a href="#box-config" data-toggle="modal" class="config">
-												<i class="fa fa-cog"></i>
-											</a>
-											<a href="javascript:;" class="reload">
-												<i class="fa fa-refresh"></i>
-											</a>
-											<a href="javascript:;" class="collapse">
-												<i class="fa fa-chevron-up"></i>
-											</a>
-											<a href="javascript:;" class="remove">
-												<i class="fa fa-times"></i>
-											</a>
-										</div>
-									</div>
-									<div class="box-body">
-										<ul class="pricing_table row">
-											{% for data in commoditylist %}
-											<li class="price_block col-md-3 col-xs-11">
-												{% if data.status=='Y'%}
+								<div class="box border purple">
+											<div class="box-title">
 
-												<h3>
-													<button title="重新验证..." onclick="javascript:verifyblock({{data.id}})" class="btn btn-danger">
-														<i class="fa fa-cloud-upload fa-2x"></i>
-													</button>
-												</h3>
-
-												{% else %}
-												<h3>
-													<button title="加入区块链..." onclick="javascript:addblock({{data.id}})" class="btn btn-success">
-														<i class="fa fa-btc fa-2x"></i>
-													</button>
-												</h3>
-												{% endif %}
-
-												<div class="price green">
-													<div class="price_figure">
-														<span class="price_number">{{data.event_name}}</span>
-													</div>
+												<div class="tools hidden-xs">
+													<a href="#box-config" data-toggle="modal" class="config">
+														<i class="fa fa-cog"></i>
+													</a>
+													<a href="javascript:;" class="reload">
+														<i class="fa fa-refresh"></i>
+													</a>
+													<a href="javascript:;" class="collapse">
+														<i class="fa fa-chevron-up"></i>
+													</a>
+													<a href="javascript:;" class="remove">
+														<i class="fa fa-times"></i>
+													</a>
 												</div>
-												<ul class="features">
-													<li>{{data.event_time}}</li>
-													<li>{{data.location}}</li>
-													<li>{{data.person}}</li>
-													<li>{{data.tel}}</li>
-													<li>描述：</li>
-													<li>{{data.desc}}</li>
-												</ul>
-												<div class="footer">
-													<button class="btn btn-info btn-xs" onclick="javascript:editcommodity({{data.id}})"><i class="fa fa-pencil-square-o"></i> 编辑</button>
-
-													{% if not data.status=='Y'%}
-													<button class="btn btn-warning btn-xs" onclick="javascript:deletedata({{data.id}})"><i class="fa fa-trash-o"></i> 删除</button>
-													{% endif%}
-
+											</div>
+											<div class="box-body big">
+												<div class="row">
+												  <div class="col-xs-2">
+													<input type="text" class="form-control" placeholder="按条形码检索">
+												  </div>
+												  <div class="col-xs-3">
+													<input type="text" class="form-control" placeholder="按商品名称">
+												  </div>
+												   <button type="submit" class="btn btn-success">提交</button>
+												</div>
+											</div>
 										</div>
-											</li>
-											{% endfor %}
-
-
-										</ul>
-
-									</div>
-								</div>
 								<!-- /BOX -->
 							</div>
 						</div>
 						<!-- /PRICING TABLE 1 -->
 						<div class="separator"></div>
-<button class="btn btn-primary" id="normal"><i class="fa fa-info"></i> Normal</button>
+
 
 					<div class="footer-tools">
 							<span class="go-top">
@@ -195,9 +158,6 @@
 	<script type="text/javascript" src="js/datepicker/picker.time.js"></script>
 	<!-- CUSTOM SCRIPT -->
 	<script src="js/script.js"></script>
-
-
-
 	<script>
 		jQuery(document).ready(function() {		
 			App.setPage("pricing");  //Set current page

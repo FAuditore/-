@@ -1,7 +1,8 @@
 from app import db
 
+
 class Commodity(db.Model):
-    # 表的名字
+    # 表的名字:,或者derived from the class name converted to lowercase and with “CamelCase” converted to “camel_case
     __tablename__ = 'bc_commodity'
     #colums
     id = db.Column(db.Integer, primary_key=True)
@@ -17,5 +18,14 @@ class Commodity(db.Model):
     status = db.Column(db.String(5), unique=False, nullable=True)
     chain_index = db.Column(db.Integer, unique=False, nullable=True)
 
+
     def __repr__(self):
         return '<Commodity %r>' % self.event_name
+
+
+
+
+
+
+
+

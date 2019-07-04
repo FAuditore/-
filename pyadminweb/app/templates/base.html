@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>{{ title }} - microblog</title>
+    </head>
+    <body>
+        <div>
+            <a href="/login">注销</a>
+            <a href="/commoditylist">商品列表</a> <!--  # url暂无-->
+            <a href="/commodityform">商品查询</a> <!--  # url暂无-->
+            <a href="">商家入驻</a> <!--  # url暂无-->
+            <a href="">系统设置</a> <!--  # url暂无-->
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

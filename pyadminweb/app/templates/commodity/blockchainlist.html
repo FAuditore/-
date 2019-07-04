@@ -68,7 +68,7 @@
 									</ul>
 									<!-- /BREADCRUMBS -->
 									<div class="clearfix">
-										<h3 class="content-title pull-left">商品录入</h3>
+										<h3 class="content-title pull-left">区块列表</h3>
 									</div>
 								</div>
 							</div>
@@ -99,44 +99,23 @@
 									<div class="box-body">
 										<ul class="pricing_table row">
 											{% for data in commoditylist %}
-											<li class="price_block col-md-3 col-xs-11">
-												{% if data.status=='Y'%}
+											<li class="price_block col-md-6 col-xs-11">
 
-												<h3>
-													<button title="重新验证..." onclick="javascript:verifyblock({{data.id}})" class="btn btn-danger">
-														<i class="fa fa-cloud-upload fa-2x"></i>
-													</button>
-												</h3>
-
-												{% else %}
-												<h3>
-													<button title="加入区块链..." onclick="javascript:addblock({{data.id}})" class="btn btn-success">
-														<i class="fa fa-btc fa-2x"></i>
-													</button>
-												</h3>
-												{% endif %}
 
 												<div class="price green">
 													<div class="price_figure">
-														<span class="price_number">{{data.event_name}}</span>
+														<span class="price_number">
+                                                            <img width="180px" height="180px" src="img/block{{data.chain_index}}.png">
+                                                        </span>
 													</div>
 												</div>
 												<ul class="features">
-													<li>{{data.event_time}}</li>
-													<li>{{data.location}}</li>
-													<li>{{data.person}}</li>
-													<li>{{data.tel}}</li>
-													<li>描述：</li>
-													<li>{{data.desc}}</li>
+                                                    <li><h4>区块索引: {{data.chain_index}}</h4></li>
+													<li>前链: {{data.pre_hash}}</li>
+													<li>当前: {{data.current_hash}}</li>
+													<li>随机数:  {{data.random_num}}</li>
 												</ul>
-												<div class="footer">
-													<button class="btn btn-info btn-xs" onclick="javascript:editcommodity({{data.id}})"><i class="fa fa-pencil-square-o"></i> 编辑</button>
 
-													{% if not data.status=='Y'%}
-													<button class="btn btn-warning btn-xs" onclick="javascript:deletedata({{data.id}})"><i class="fa fa-trash-o"></i> 删除</button>
-													{% endif%}
-
-										</div>
 											</li>
 											{% endfor %}
 
@@ -195,9 +174,6 @@
 	<script type="text/javascript" src="js/datepicker/picker.time.js"></script>
 	<!-- CUSTOM SCRIPT -->
 	<script src="js/script.js"></script>
-
-
-
 	<script>
 		jQuery(document).ready(function() {		
 			App.setPage("pricing");  //Set current page
@@ -253,7 +229,7 @@
 			cache:false,
 			dataType: 'html',
 			success: function (response) {
-			alert('成功加入区块链');
+			alert('dddddd');
 
 				 $('.box').html($(response).find('.box').html());
 				}
