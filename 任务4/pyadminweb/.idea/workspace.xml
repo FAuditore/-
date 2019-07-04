@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6aa0f25f-e3ce-41f7-9445-509a8a311ef4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../pyadminweb/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pyadminweb/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pyadminweb/.idea/pyadminweb.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pyadminweb/.idea/pyadminweb.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pyadminweb/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pyadminweb/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pyadminweb/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../pyadminweb/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../pyadminweb/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../pyadminweb/app/__init__.py" afterDir="false" />
-    </list>
+    <list default="true" id="6aa0f25f-e3ce-41f7-9445-509a8a311ef4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
+            <state relative-caret-position="408">
               <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#0#95#0" expanded="true" />
@@ -88,7 +82,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,12 +108,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pyadminweb" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -243,19 +237,9 @@
     <entry file="file://$PROJECT_DIR$/app/config.py" />
     <entry file="file://$PROJECT_DIR$/../区块链/mod_publisher/__init__.py" />
     <entry file="file://$PROJECT_DIR$/app/templates/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/app/templates/liftsiderbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/userModel.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/liftsiderbar.html" />
+    <entry file="file://$PROJECT_DIR$/app/userModel.py" />
+    <entry file="file://$PROJECT_DIR$/app/views.py" />
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -269,47 +253,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/commodity/commodityform.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="49" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/commodity/commoditylist.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/mod_commodity/controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="e#0#46#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/mod_commodity/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/mod_commodity/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/commodity/commodityform.html" />
+    <entry file="file://$PROJECT_DIR$/app/templates/commodity/commoditylist.html" />
+    <entry file="file://$PROJECT_DIR$/app/mod_commodity/controller.py" />
+    <entry file="file://$PROJECT_DIR$/app/mod_commodity/forms.py" />
+    <entry file="file://$PROJECT_DIR$/app/mod_commodity/models.py" />
     <entry file="file://$PROJECT_DIR$/app/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -319,7 +267,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
+        <state relative-caret-position="408">
           <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#95#0" expanded="true" />
