@@ -1,6 +1,6 @@
 from flask import Flask,render_template,send_from_directory,redirect,url_for,flash,request,json
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin,login_manager
+from flask_login import UserMixin,login_manager,login_user
 
 class User(UserMixin):
     users = {'user@user.com': {'password': '123'},
@@ -33,15 +33,11 @@ def do_login():
         user = User()
         user.id = email
         print('登录成功')
-      #  login_user(user)
+       # login_user(user)
         next = request.args.get('next')
         return redirect(url_for('index'))
 
     return render_template("error_auth.html")
-
-
-
-
 
 
 from app import views

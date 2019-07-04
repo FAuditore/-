@@ -7,7 +7,7 @@ from app.mod_commodity.models import Commodity
 import app.mod_commodity.controllers as c
 from app.mod_commodity.blockchain import Block
 from app.mod_publisher.zmqpublisher import publisher,conf
-import qrcode
+# import qrcode
 import threading
 
 
