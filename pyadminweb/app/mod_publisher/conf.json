@@ -1,6 +1,6 @@
-{"server":"47.104.196.27",
+{"server":"127.0.0.1",
   "private_server":"172.31.246.45",
-  "port":"9003",
+  "port":"9000",
   "sub_topic":"new_block",
   "pre_file":"block",
   "signal_port":"9002",

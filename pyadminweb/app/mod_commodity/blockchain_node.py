@@ -12,7 +12,7 @@ def writeBlock(chainname, block):
         dict = {"Blockchain": []}
     else:
         dict=json.load(open(chainname+'.json'))
-        print(dict)
+       # print(dict)
 
     dict["Blockchain"].append(block.__dict__)
 

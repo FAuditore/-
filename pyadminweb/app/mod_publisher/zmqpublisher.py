@@ -14,24 +14,26 @@ class publisher:
         self.key = pub_key
         self.data = pub_data
 
-    def publish_newblock(self,**block):
+    def publish_newblock(self,block):
         context = zmq.Context()
         publisher = context.socket(zmq.PUB)
         publisher.bind("tcp://{}:{}".format(self.server,self.port))
 
-        block_string = json.dumps(block['data'].__dict__, sort_keys=True)
-
+       # block_string = json.dumps(block['data'].__dict__, sort_keys=True)
+        block_string = json.dumps(block.__dict__, sort_keys=True)
+        print(block_string)
         i = 0
         while True:
-            publisher.send_multipart([b'new_block', bytes(block_string,'utf-8')])
-            time.sleep(2)
-            print(i)
-            i+=1
-            if i==2:
-                break
+         publisher.send_multipart([b'new_block', bytes(block_string,'utf-8')])
+         time.sleep(2)
+         print('正在进行第{}次发送'.format(i+1))
+         i+=1
+         if i==3:
+            break
 
         publisher.close()
         context.term()
+        print('新区块信息发送完毕')
 
     def publish_write_newblock(self,block):
         context = zmq.Context()
@@ -46,7 +48,7 @@ class publisher:
             time.sleep(2)
             print(i)
             i+=1
-            if i==2:
+            if i==3:
                 break
 
         publisher.close()
@@ -72,4 +74,24 @@ class publisher:
                 socket.close()
                 context.term()
                 break
+
+
+
+# 发送新区块时调用
+'''
+ zmqnew=publisher(conf["server"],conf["port"])
+ zmqnew.publish_newblock(block)
+'''
+# 接收用户计算返回哈希值时调用
+'''
+zmqrep=publisher(conf["server"],conf["signal_port"])
+zmqrep.req_rep()
+'''
+
+#确认一位用户发来的哈希值有效后发布新区块时调用 req_rep会自动调用
+'''
+zmqpub=publisher(conf["server"],conf["write_port"])
+zmqpub.publish_write_newblock(block)
+'''
+
 

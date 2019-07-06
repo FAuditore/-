@@ -42,3 +42,4 @@ def do_login():
 
 from app import views
 from app.mod_commodity.blockchain_node import Blockchain
+

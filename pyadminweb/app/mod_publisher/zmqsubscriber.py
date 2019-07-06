@@ -58,12 +58,12 @@ def compute_hash(data):
     #block_string = self.transactions+str(self.nonce)
     block_object = json.loads(data)
     computed_hash = sha256(str(data,'utf-8').encode()).hexdigest()
-    while not computed_hash.startswith('0' * 5):
+    while not computed_hash.startswith('0' * 2):
 
         block_object['nonce'] +=1
         ee = json.dumps(block_object)
         computed_hash = sha256(ee.encode()).hexdigest()
-        print(computed_hash)
+      #  print(computed_hash)
     print('最终结果是:{}, 随机数:{}'.format(computed_hash, block_object['nonce']))
 
     # send signal of status,FIFO
@@ -92,8 +92,9 @@ def write_blockfile(data):
         f.write(json.dumps(obj_data,indent=2,ensure_ascii=False))
 
 
+# 运用线程一个负责接收区块信息并计算反馈给服务器 一个负责接收确认有效的区块保存
 print('消息服务器',conf["server"])
-_newblock_sub = subscriber(conf["server"],conf["port"],conf["sub_topic"])
+_newblock_sub = subscriber(conf["server"],conf["port"],"new_block")
 # instead of s.sub_newblock(),we use thread fun,avoid locking
 _newblock_thread = threading.Thread(target=_newblock_sub.sub_newblock)
 _newblock_thread.start()
