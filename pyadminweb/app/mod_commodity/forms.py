@@ -1,4 +1,4 @@
-#view page, must registed in app.__init__.py first
+# view page, must registed in app.__init__.py first
 import time
 from app import app
 from flask_login import login_required
@@ -7,11 +7,11 @@ from app.mod_commodity.models import Commodity
 import app.mod_commodity.controllers as c
 from app.mod_commodity.blockchain import Block
 from app.mod_publisher.zmqpublisher import publisher,conf
-# import qrcode
+import qrcode
 import threading
 
 
-#导航页面里的href上使用 <a class="" href="{{ url_for('list_all_commodities') }}"> 或  href="/commoditylist"都可以路由到这里
+# 导航页面里的href上使用 <a class="" href="{{ url_for('list_all_commodities') }}"> 或  href="/commoditylist"都可以路由到这里
 @app.route('/commoditylist')
 @login_required
 def list_all_commodities():
@@ -25,6 +25,7 @@ def list_all_commodities():
 def list_all_blockchains():
     commodity = c.get_all_blocks()
     return render_template("commodity/blockchainlist.html",commoditylist= commodity)
+
 
 @app.route('/searchlist')
 @login_required
@@ -143,8 +144,7 @@ def add_new_block(id):
 
         c.update_hash_data(commodity)
         # for qrcode
-        #block_in_chain.append(commodity)
-
+        # block_in_chain.append(commodity)
 
     i = 0
     qr_data = ''
@@ -153,7 +153,6 @@ def add_new_block(id):
         temp_data = "{},{},{},{},{},{}".format(blockdata.event_name, blockdata.event_time, blockdata.location,
                                                blockdata.person, blockdata.tel, blockdata.desc)
         qr_data += 'block{}:{}'.format(i,temp_data)
-
 
     img = qrcode.make(qr_data)
     img.save(app.static_folder + '/img/' + 'block'+str(i)+'.png')

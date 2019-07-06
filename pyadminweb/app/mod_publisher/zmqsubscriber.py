@@ -9,6 +9,7 @@ import time
 _basepath = os.path.abspath(os.path.dirname(__file__))
 conf = json.load(open(os.path.abspath(os.path.dirname(__file__))+"\\conf.json"))
 
+
 class subscriber:
     def __init__(self, bindserver,port,pub_key):
         self.server = bindserver
@@ -65,10 +66,9 @@ def compute_hash(data):
         print(computed_hash)
     print('最终结果是:{}, 随机数:{}'.format(computed_hash, block_object['nonce']))
 
-    #send signal of status,FIFO
-    #time.sleep(10)
+    # send signal of status,FIFO
+    # time.sleep(10)
     send_finish_status(block_object)
-
 
     return computed_hash
 
@@ -84,6 +84,7 @@ def send_finish_status(block_object):
     block_string = json.dumps(block_dict)
     socket.send(bytes(block_string,'utf-8'))
 
+
 def write_blockfile(data):
     obj_data = json.loads(data.decode(encoding="utf-8"))
     #print('the file ==================',obj_data," and index is ",json.dumps(obj_data,indent=2,ensure_ascii=False))
@@ -93,7 +94,7 @@ def write_blockfile(data):
 
 print('消息服务器',conf["server"])
 _newblock_sub = subscriber(conf["server"],conf["port"],conf["sub_topic"])
-#instead of s.sub_newblock(),we use thread fun,avoid locking
+# instead of s.sub_newblock(),we use thread fun,avoid locking
 _newblock_thread = threading.Thread(target=_newblock_sub.sub_newblock)
 _newblock_thread.start()
 

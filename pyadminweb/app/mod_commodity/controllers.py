@@ -1,13 +1,16 @@
 from app.mod_commodity.models import Commodity
 from app import db
 
+
 def get_all_data():
     return Commodity.query.all()
+
 
 def select_by_id(id):
     return Commodity.query.filter_by(id=id).first()
 
-#update or insert data
+
+# update or insert data
 def insert_data(commodity):
     recordid = 0
     if(commodity.id==0):
@@ -22,16 +25,18 @@ def insert_data(commodity):
 
     return recordid
 
+
 def delete_by_id(commodity):
     db.session.delete(commodity)
     db.session.commit()
 
-#get all blocks of the chain
+
+# get all blocks of the chain
 def get_all_blocks():
     return Commodity.query.filter_by(status='Y').order_by(Commodity.chain_index).all()
 
 
-#update block chain's data
+# update block chain's data
 def update_hash_data(commodity):
     data = {'current_hash':commodity.current_hash,'pre_hash':commodity.pre_hash,'random_num':commodity.random_num,
            'chain_index':commodity.chain_index,'status':commodity.status}

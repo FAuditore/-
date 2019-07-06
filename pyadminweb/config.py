@@ -10,7 +10,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 # Define the database - we are working with
 # SQLite for this example
 # SQLALCHEMY_DATABASE_URI = 'sqlite://' + os.path.join(BASE_DIR, 'app.db')
-SQLALCHEMY_DATABASE_URI = 'mysql+mysqlconnector:/energy:energy168@localhost/commodity?charset=utf8'
+SQLALCHEMY_DATABASE_URI = 'mysql+pymysql:/root:123456@localhost/qukuailian?charset=utf8'
 DATABASE_CONNECT_OPTIONS = {}
 
 # 如果设置成 True (默认情况)，Flask-SQLAlchemy 将会追踪对象的修改并且发送信号。这需要额外的内存， 如果不必要的可以禁用它

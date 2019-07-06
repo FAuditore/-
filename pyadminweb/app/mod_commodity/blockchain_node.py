@@ -1,11 +1,31 @@
 from hashlib import sha256
-import json
+import json,os
 import time
-
-from flask import Flask, request
+from flask import Flask, request,render_template
 import requests
 
 
+
+# 将区块添加至链 参数:链名  区块
+def writeBlock(chainname, block):
+    if not os.path.exists(chainname+'.json'):
+        dict = {"Blockchain": []}
+    else:
+        dict=json.load(open(chainname+'.json'))
+        print(dict)
+
+    dict["Blockchain"].append(block.__dict__)
+
+    string=json.dumps(dict,indent=2,sort_keys=True)
+
+    with open(chainname+'.json', 'w+') as f:
+      f.write(string)
+      f.close()
+
+
+
+
+#  生成一个含有编号 交易 时间戳 前哈希的区块
 class Block:
     def __init__(self, index, transactions, timestamp, previous_hash):
         self.index = index
@@ -14,6 +34,7 @@ class Block:
         self.previous_hash = previous_hash
         self.nonce = 0
 
+# 用sha256()方法计算哈希值 返回16进制加密码
     def compute_hash(self):
         """
         A function that return the hash of the block contents.
@@ -21,16 +42,33 @@ class Block:
         block_string = json.dumps(self.__dict__, sort_keys=True)
         return sha256(block_string.encode()).hexdigest()
 
+    def proof_of_work(self, block):
+        """
+        Function that tries different values of nonce to get a hash
+        that satisfies our difficulty criteria.
+        """
+        block.nonce = 0
+
+        computed_hash = block.compute_hash()
+        while not computed_hash.startswith('0' * 2):
+            block.nonce += 1
+            computed_hash = block.compute_hash()
+            print(computed_hash)
+        print('最终结果是:{}, 随机数:{}'.format(computed_hash,block.nonce))
+        return computed_hash
+
 
 class Blockchain:
     # difficulty of our PoW algorithm
-    difficulty = 4
+    difficulty = 2
 
-    def __init__(self):
+    def __init__(self,chainName):
+        self.chainName =chainName
         self.unconfirmed_transactions = []
         self.chain = []
         self.create_genesis_block()
 
+# 生成原始区块
     def create_genesis_block(self):
         """
         A function to generate genesis block and appends it to
@@ -39,12 +77,16 @@ class Blockchain:
         """
         genesis_block = Block(0, [], time.time(), "0")
         genesis_block.hash = genesis_block.compute_hash()
+        writeBlock(self.chainName, genesis_block)
         self.chain.append(genesis_block)
 
+
+    # 倒数第一个区块
     @property
     def last_block(self):
         return self.chain[-1]
 
+# 添加区块
     def add_block(self, block, proof):
         """
         A function that adds the block to the chain after verification.
@@ -62,6 +104,7 @@ class Blockchain:
             return False
 
         block.hash = proof
+        writeBlock(self.chainName, block)
         self.chain.append(block)
         return True
 
@@ -118,7 +161,7 @@ class Blockchain:
 app = Flask(__name__)
 
 # the node's copy of blockchain
-blockchain = Blockchain()
+# blockchain = Blockchain()
 
 # the address to other participating members of the network
 peers = set()
@@ -148,7 +191,7 @@ def new_transaction():
 @app.route('/chain', methods=['GET'])
 def get_chain():
     # make sure we've the longest chain
-    #consensus()
+    # consensus()
     chain_data = []
     for block in blockchain.chain:
         chain_data.append(block.__dict__)
@@ -240,5 +283,10 @@ def announce_new_block(block):
         url = "http://{}/add_block".format(peer)
         requests.post(url, data=json.dumps(block.__dict__, sort_keys=True))
 
+'''
+# app.run(debug=True, port=8000)
+bl=Block('123','交易交易',time.time(),0)
+print('区块编号:{} 交易信息:{} 时间戳:{} 前哈希:{}'.format(bl.index,bl.transactions,bl.timestamp,bl.previous_hash))
+print('哈希值{}'.format(bl.compute_hash()))
 
-app.run(debug=True, port=8000)
+   '''

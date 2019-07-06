@@ -10,7 +10,7 @@ class publisher:
     def __init__(self, bindserver,port,pub_key,pub_data=''):
         self.server = bindserver
         self.port = port
-        #self.timestamp = timestamp
+        #self.timestamp = mestamp
         self.key = pub_key
         self.data = pub_data
 
@@ -32,7 +32,6 @@ class publisher:
 
         publisher.close()
         context.term()
-
 
     def publish_write_newblock(self,block):
         context = zmq.Context()

@@ -2,13 +2,13 @@ from hashlib import sha256
 import json
 import time
 
-class Block:
 
+class Block:
 
     def __init__(self, index, transactions, previous_hash):
         self.index = index
         self.transactions = transactions
-        #self.timestamp = timestamp
+        # self.timestamp = timestamp
         self.previous_hash = previous_hash
         self.nonce = 0
 
@@ -16,7 +16,7 @@ class Block:
         """
         A function that return the hash of the block contents.
         """
-        #block_string = self.transactions+str(self.nonce)
+        # block_string = self.transactions+str(self.nonce)
         block_string = json.dumps(self.__dict__, sort_keys=True)
         return sha256(block_string.encode()).hexdigest()
 
@@ -33,5 +33,5 @@ class Block:
             computed_hash = block.compute_hash()
             print(computed_hash)
         print('最终结果是:{}, 随机数:{}'.format(computed_hash,block.nonce))
-
         return computed_hash
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<form method="post">
+<head>
+	<meta charset="utf-8"/>
+	<title>用户注册</title>
+	<meta name="author" content="DeathGhost" />
+	<link rel="stylesheet" type="text/css" href="css/resign.css" >
+
+</head>
+<body>
+<dl class="admin_login">
+ <dt>
+  <strong>用户注册</strong>
+  <em>Login</em>
+ </dt>
+ <dd class="user_icon">
+  <input type="text" placeholder="账号" class="login_txtbx" name="username" />
+ </dd> 
+ <dd class="email_icon">
+  <input type="text" placeholder="邮箱" class="login_txtbx" name="mailbox" />
+ </dd>
+ <dd class="pwd_icon">
+  <input type="password" placeholder="密码" class="login_txtbx" name="password"/>
+ </dd>
+ <dd class="pwd_icon">
+  <input type="password" placeholder="确认密码" class="login_txtbx" name="repassword"/>
+ </dd> 
+ <dd>
+ <dd class="l_icon">
+   <input type="text" placeholder="联系方式" class="login_txtbx" name="username" />
+ </dd>
+ <dd class="select">
+<div align="left"></div>
+<div align="left">
+ <!-- <label>
+      用户类别
+      <div align="center"></div>
+  </label>
+  <div align="left"></div>
+</label> -->
+    <input name="kind" type="radio" value="" />
+原产地
+<input name="kind" type="radio" value="" />
+制造商
+<input name="kind" type="radio" value="" />
+物流部门
+<br />
+<input name="kind" type="radio" value="" />
+经销商
+<input name="kind" type="radio" value="" />
+普通用户
+  </div>
+</div>
+ </dd>
+ 
+ 
+ 
+ <dd>
+ 
+  <input type="button" value="注册" class="resign_btn"/>
+ </dd>
+ <dd>
+  <input type="button" value="返回" class="back_btn"/><!--submit-->
+ </dd>
+
+  <!--   {# 接收回执消息 #}
+    {% for message in get_flashed_messages() %}
+     {{message}}
+    {% endfor %}-->
+</dl>
+</body>
+
+</form>
+</html>

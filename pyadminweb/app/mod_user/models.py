@@ -1,6 +1,5 @@
 from app import db
 
-
 class User(db.Model):
     # 表的名字:,或者derived from the class name converted to lowercase and with “CamelCase” converted to “camel_case
     __tablename__ = 'sys_user'
@@ -15,3 +14,16 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %r>' % self.username
+'''
+    def __init__(self,id,name,real_name):
+        self.id=id
+        self.name=name
+        self.real_name=real_name
+        self.isactive=''
+        self.theme=''
+        self.email=''
+
+
+user1=User(1,'abc','aaa')
+db.session.add(user1)
+db.session.commit()'''

@@ -1,4 +1,4 @@
-from flask import Flask,render_template,send_from_directory,redirect,url_for,flash,request,json
+from flask import Flask,render_template,send_from_directory,redirect,url_for,flash,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin,login_user,login_required,login_manager
 class User(UserMixin):
@@ -13,7 +13,7 @@ app.config.from_object('config')
 # 创建一个 SQLAlchemy对象实例.
 db = SQLAlchemy(app)
 
-
+user_login={}
 @app.route('/')
 def index():
     return render_template("login.html")
@@ -41,4 +41,4 @@ def do_login():
 
 
 from app import views
-
+from app.mod_commodity.blockchain_node import Blockchain
