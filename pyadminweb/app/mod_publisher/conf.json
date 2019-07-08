@@ -4,5 +4,6 @@
   "sub_topic":"new_block",
   "pre_file":"block",
   "signal_port":"9002",
-  "write_port":"9001"
+  "write_port":"9001",
+  "chain_port": "9003"
 }

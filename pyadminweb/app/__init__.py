@@ -14,6 +14,7 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 user_login={}
+
 @app.route('/')
 def index():
     return render_template("login.html")
@@ -41,5 +42,9 @@ def do_login():
 
 
 from app import views
+
+
 from app.mod_commodity.blockchain_node import Blockchain
 
+# 商品链链表
+chain_list=[]

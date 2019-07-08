@@ -4,9 +4,13 @@ from app.mod_commodity.blockchain_node import Block
 
 from app.mod_commodity.blockchain_node import Blockchain
 
+from app import chain_list
 
 bc=Blockchain('123')
-block=Block('4','交易啊交易',time.time(),bc.last_block.hash)
+chain_list.append(bc)
+
+
+block=Block('1','交易啊交易',time.time(),bc.last_block.hash)
 
 
 # 将区块添加至链 参数  链名  区块  第几个区块

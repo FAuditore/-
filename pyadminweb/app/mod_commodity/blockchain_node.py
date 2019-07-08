@@ -27,12 +27,13 @@ def writeBlock(chainname, block):
 
 #  生成一个含有编号 交易 时间戳 前哈希的区块
 class Block:
-    def __init__(self, index, transactions, timestamp, previous_hash):
+    def __init__(self, index, transactions, timestamp, previous_hash,nonce,chain):
         self.index = index
         self.transactions = transactions
         self.timestamp = timestamp
         self.previous_hash = previous_hash
-        self.nonce = 0
+        self.nonce = nonce
+        self.belongchain=chain
 
 # 用sha256()方法计算哈希值 返回16进制加密码
     def compute_hash(self):
@@ -62,8 +63,8 @@ class Blockchain:
     # difficulty of our PoW algorithm
     difficulty = 2
 
-    def __init__(self,chainName):
-        self.chainName =chainName
+    def __init__(self,chainname):
+        self.chainName = chainname
         self.unconfirmed_transactions = []
         self.chain = []
         self.create_genesis_block()
@@ -75,7 +76,8 @@ class Blockchain:
         the chain. The block has index 0, previous_hash as 0, and
         a valid hash.
         """
-        genesis_block = Block(0, [], time.time(), "0")
+        genesis_block = Block(0, [], time.time(), "0",'0',self.chainName)
+        print(genesis_block.__dict__)
         genesis_block.hash = genesis_block.compute_hash()
         writeBlock(self.chainName, genesis_block)
         self.chain.append(genesis_block)
